@@ -1,0 +1,10 @@
+<h1>Movies go here</h1>
+
+<section>
+  <h2>Your movies</h2>
+  <ol>
+    {% for movie in movies %}
+    <li>{{movie.title}}</li>
+    {% endfor %}
+  </ol>
+</section>

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, redirect
-from app.models import Post
+from app.models import Post, Movie
 from app.db import get_db
 
 bp = Blueprint('home', __name__, url_prefix='/')
@@ -9,12 +9,11 @@ bp = Blueprint('home', __name__, url_prefix='/')
 def index():
     # get all posts
     db = get_db()
-    posts = db.query(Post).order_by(Post.created_at.desc()).all()
 
+    movies = db.query(Movie).order_by(Movie.title)
     return render_template(
-        'homepage.html',
-        posts=posts,
-        loggedIn=session.get('loggedIn')
+        'movies.html',
+        movies=movies
     )
 
 
