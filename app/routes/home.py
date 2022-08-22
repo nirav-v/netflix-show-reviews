@@ -13,7 +13,8 @@ def index():
     movies = db.query(Movie).order_by(Movie.title)
     return render_template(
         'movies.html',
-        movies=movies
+        movies=movies,
+        loggedIn=session.get('loggedIn')
     )
 
 

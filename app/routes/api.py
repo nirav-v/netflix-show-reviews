@@ -10,6 +10,7 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 @bp.route('/users', methods=['POST'])
 def signup():
     data = request.get_json()
+    print(data)
     db = get_db()
 
     try:
