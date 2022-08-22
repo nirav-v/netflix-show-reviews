@@ -23,18 +23,31 @@ def login():
     if session.get('loggedIn') is None:
         return render_template('login.html')
 
-    return redirect('/dashboard/')
+    return redirect('/')
 
 
-@bp.route('/post/<id>')
+# @bp.route('/post/<id>')
+# def single(id):
+#     # get single post by id
+#     db = get_db()
+#     post = db.query(Post).filter(Post.id == id).one()
+
+#     # render single post template
+#     return render_template(
+#         'single-post.html',
+#         post=post,
+#         loggedIn=session.get('loggedIn')
+#     )
+
+@bp.route('/movie/<id>')
 def single(id):
-    # get single post by id
+    # get single movie by id
     db = get_db()
-    post = db.query(Post).filter(Post.id == id).one()
+    movie = db.query(Movie).filter(Movie.id == id).one()
 
     # render single post template
     return render_template(
-        'single-post.html',
-        post=post,
+        'single-movie.html',
+        # post=post,
         loggedIn=session.get('loggedIn')
     )
