@@ -1,13 +1,7 @@
 {% extends "layout/main.html" %} {% block body %}
-<section>
-  <h2>Your movies</h2>
-  <ul>
-    {% for movie in movies %}
-    <li>
-      <a href="/movie/{{movie.id}}">{{movie.title}}</a> directed by
-      {{movie.director}} released: {{movie.release_year}}
-    </li>
-    {% endfor %}
-  </ul>
-</section>
+<ul class="post-list">
+  {% for movie in movies %}
+  <li>{% include "partials/movie-info.html" %}</li>
+  {% endfor %}
+</ul>
 {% endblock %}

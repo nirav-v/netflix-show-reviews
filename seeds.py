@@ -17,8 +17,6 @@ Base.metadata.create_all(engine)
 db = Session()
 
 # insert csv data into movies table
-
-
 movies = pd.read_csv('netflix_titles.csv', index_col=0,
                      quotechar='"', delimiter=",")
 

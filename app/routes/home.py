@@ -48,6 +48,6 @@ def single(id):
     # render single post template
     return render_template(
         'single-movie.html',
-        # post=post,
+        movie=movie,
         loggedIn=session.get('loggedIn')
     )

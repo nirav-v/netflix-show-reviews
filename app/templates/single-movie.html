@@ -1,1 +1,5 @@
 <h1>Single movie page</h1>
+{% extends "layout/main.html" %} {% block body %}
+<h1>{{movie.title}}</h1>
+<p>directed by {{movie.director}} released: {{movie.release_year}}</p>
+{% endblock %}
