@@ -10,7 +10,7 @@
 </p>
 
 {% if loggedIn == True %}
-<form class="comment-form">
+<form class="review-form">
   <div>
     <label for="stars"
       >How many stars out of 5 would you give this movie?</label
@@ -26,10 +26,10 @@
     />
   </div>
   <div>
-    <label for="comment-body"
+    <label for="review-body"
       >Describe your review of this Movie/T.V. Show</label
     >
-    <textarea name="comment-body"></textarea>
+    <textarea name="review-body"></textarea>
   </div>
 
   <div>
@@ -40,3 +40,4 @@
 {% else %}
 <h2>Login or sign up to leave your review!</h2>
 {% endif %} {% endblock %}
+<script src="/javascript/review.js"></script>

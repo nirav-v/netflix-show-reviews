@@ -1,6 +1,6 @@
 import sys
 from flask import Blueprint, request, jsonify, session
-from app.models import User, Post, Comment, Vote
+from app.models import User, Post, Comment, Vote, Review
 from app.db import get_db
 from app.utils.auth import login_required
 
@@ -91,6 +91,33 @@ def comment():
         return jsonify(message='Comment failed'), 500
 
     return jsonify(id=newComment.id)
+
+
+@bp.route('/reviews', methods=['POST'])
+@login_required
+def review():
+    data = request.get_json()
+    db = get_db()
+
+    try:
+        # create a new review
+        newReview = Review(
+            stars= data['reviewRating'],
+            review_text= data['reviewText'],
+            movie_id=data['movie_id'],
+            user_id=session.get('user_id')
+        )
+
+        db.add(newReview)
+        db.commit()
+
+    except:
+        print(sys.exc_info()[0])
+
+        db.rollback()
+        return jsonify(message='Review failed'), 500
+
+    return jsonify(id=newReview.id)
 
 
 @bp.route('/posts/upvote', methods=['PUT'])
