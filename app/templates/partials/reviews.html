@@ -1,0 +1,11 @@
+<div class="reviews">
+  <h1>reviews</h1>
+  {% for review in reviews %}
+  <section class="review">
+    <div class="meta">
+      {{review.user.username}} on{{review.created_at|format_date}}
+    </div>
+    <div class="text">{{review.review_text}}</div>
+  </section>
+  {% endfor %}
+</div>
