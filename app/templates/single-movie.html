@@ -2,4 +2,18 @@
 {% extends "layout/main.html" %} {% block body %}
 <h1>{{movie.title}}</h1>
 <p>directed by {{movie.director}} released: {{movie.release_year}}</p>
-{% endblock %}
+
+{% if loggedIn == True %}
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+    <button type="button" class="upvote-btn">upvote</button>
+  </div>
+</form>
+{% else %}
+<h2>Login or sign up to leave your review!</h2>
+{% endif %} {% endblock %}
