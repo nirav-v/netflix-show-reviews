@@ -1,17 +1,40 @@
-<h1>Single movie page</h1>
 {% extends "layout/main.html" %} {% block body %}
 <h1>{{movie.title}}</h1>
-<p>directed by {{movie.director}} released: {{movie.release_year}}</p>
+<p>
+  Directed by {{movie.director}}
+  <br />
+  Released: {{movie.release_year}}
+  <br />
+  Cast: {{movie.cast}}
+  <br />
+</p>
 
 {% if loggedIn == True %}
 <form class="comment-form">
   <div>
+    <label for="stars"
+      >How many stars out of 5 would you give this movie?</label
+    >
+    <input
+      id="stars"
+      type="number"
+      placeholder="ex: 4.5 stars"
+      size="5"
+      min="0"
+      max="5"
+      style="width: 100px"
+    />
+  </div>
+  <div>
+    <label for="comment-body"
+      >Describe your review of this Movie/T.V. Show</label
+    >
     <textarea name="comment-body"></textarea>
   </div>
 
   <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
+    <button type="submit">add review</button>
+    <!-- <button type="button" class="upvote-btn">upvote</button> -->
   </div>
 </form>
 {% else %}
