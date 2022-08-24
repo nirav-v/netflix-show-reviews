@@ -10,7 +10,7 @@ def index():
     # get all posts
     db = get_db()
 
-    movies = db.query(Movie).order_by(Movie.title)
+    movies = db.query(Movie).order_by(Movie.title).all()
     return render_template(
         'movies.html',
         movies=movies,
