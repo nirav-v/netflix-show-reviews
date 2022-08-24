@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session, redirect
-from app.models import Post, Movie
+from app.models import Movie
 from app.db import get_db
 
 bp = Blueprint('home', __name__, url_prefix='/')
@@ -26,19 +26,6 @@ def login():
 
     return redirect('/')
 
-
-# @bp.route('/post/<id>')
-# def single(id):
-#     # get single post by id
-#     db = get_db()
-#     post = db.query(Post).filter(Post.id == id).one()
-
-#     # render single post template
-#     return render_template(
-#         'single-post.html',
-#         post=post,
-#         loggedIn=session.get('loggedIn')
-#     )
 
 @bp.route('/movie/<id>')
 def single(id):
