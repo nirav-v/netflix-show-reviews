@@ -21,6 +21,12 @@ async function reviewFormHandler(event) {
         "Content-Type": "application/json",
       },
     });
+
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
   }
 }
 
