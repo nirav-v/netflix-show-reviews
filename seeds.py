@@ -8,11 +8,13 @@ from sqlalchemy.orm import sessionmaker
 from app.models import Movie
 from app.db import Session, Base, engine
 
+
 # drop and rebuild tables
 Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
 
 db = Session()
+
 
 # insert csv data into movies table
 movies = pd.read_csv('netflix_titles.csv', index_col=0,
