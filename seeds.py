@@ -15,20 +15,20 @@ Base.metadata.create_all(engine)
 db = Session()
 
 # insert csv data into movies table
-# movies = pd.read_csv('netflix_titles.csv', index_col=0,
-#                      quotechar='"', delimiter=",")
+movies = pd.read_csv('netflix_titles.csv', index_col=0,
+                     quotechar='"', delimiter=",")
 
-# df = movies
-# # code from stack overflow to convert 'nan' values into None to prevent sql error when inserting an empty entry
-# df.dropna(inplace=True)
+df = movies
+# code from stack overflow to convert 'nan' values into None to prevent sql error when inserting an empty entry
+df.dropna(inplace=True)
 
-# df1 = df.where((pd.notnull(df)), None)
+df1 = df.where((pd.notnull(df)), None)
 
-# for i in range(len(movies.title)):
-#     db.add_all([
-#         Movie(type=movies.type[i], title=movies.title[i],
-#                director=movies.director[i], cast=movies.cast[i], country=movies.country[i], date_added=movies.date_added[i], release_year=movies.release_year[i], rating=movies.rating[i], duration=movies.duration[i], description=movies.description[i])
-#     ])
+for i in range(len(movies.title)):
+    db.add_all([
+        Movie(type=movies.type[i], title=movies.title[i],
+               director=movies.director[i], cast=movies.cast[i], country=movies.country[i], date_added=movies.date_added[i], release_year=movies.release_year[i], rating=movies.rating[i], duration=movies.duration[i], description=movies.description[i])
+    ])
 
 db.commit()
 
