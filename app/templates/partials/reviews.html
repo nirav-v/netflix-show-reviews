@@ -5,6 +5,7 @@
     <div class="meta">
       {{review.user.username}} on {{review.created_at|format_date}}
     </div>
+    {{review.stars}} out of 5 stars
     <div class="text">{{review.review_text}}</div>
   </section>
   {% endfor %}
