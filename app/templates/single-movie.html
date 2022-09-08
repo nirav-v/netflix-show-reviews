@@ -8,7 +8,7 @@
   Cast: {{movie.cast}}
   <br />
 </p>
-
+{% if loggedIn == True %}
 <form class="review-form">
   <div>
     <label for="stars"
@@ -37,8 +37,8 @@
   </div>
 </form>
 
-{% with reviews=movie.reviews %} {% include "partials/reviews.html" %} {%
-endwith %} {% if loggedIn == True %}
+{% endif %} {% with reviews=movie.reviews %} {% include "partials/reviews.html"
+%} {% endwith %}
 <script src="/javascript/review.js"></script>
 
-{% endif %} {% endblock %}
+{% endblock %}
