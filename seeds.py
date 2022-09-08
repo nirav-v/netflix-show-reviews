@@ -26,7 +26,7 @@ df.dropna(inplace=True)
 
 df1 = df.where((pd.notnull(df)), None)
 
-for i in range(len(movies.title)):
+for i in range(3000):
     db.add_all([
         Movie(type=movies.type[i], title=movies.title[i],
                director=movies.director[i], cast=movies.cast[i], country=movies.country[i], date_added=movies.date_added[i], release_year=movies.release_year[i], rating=movies.rating[i], duration=movies.duration[i], description=movies.description[i])
