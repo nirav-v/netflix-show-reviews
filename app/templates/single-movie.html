@@ -36,7 +36,8 @@
     <!-- <button type="button" class="upvote-btn">upvote</button> -->
   </div>
 </form>
-
+{% else %}
+<h2>Sign in to leave your review !</h2>
 {% endif %} {% with reviews=movie.reviews %} {% include "partials/reviews.html"
 %} {% endwith %}
 <script src="/javascript/review.js"></script>
