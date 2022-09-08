@@ -67,7 +67,6 @@ def login():
     return jsonify(id=user.id)
 
 
-
 @bp.route('/reviews', methods=['POST'])
 @login_required
 def review():
@@ -77,8 +76,8 @@ def review():
     try:
         # create a new review
         newReview = Review(
-            stars= data['reviewRating'],
-            review_text= data['reviewText'],
+            stars=data['reviewRating'],
+            review_text=data['reviewText'],
             movie_id=data['movie_id'],
             user_id=session.get('user_id')
         )
@@ -93,68 +92,3 @@ def review():
         return jsonify(message='Review failed'), 500
 
     return jsonify(id=newReview.id)
-
-
-
-
-# @bp.route('/posts', methods=['POST'])
-# @login_required
-# def create():
-#     data = request.get_json()
-#     db = get_db()
-
-#     try:
-#         # create a new post
-#         newPost = Post(
-#             title=data['title'],
-#             post_url=data['post_url'],
-#             user_id=session.get('user_id')
-#         )
-
-#         db.add(newPost)
-#         db.commit()
-#     except:
-#         print(sys.exc_info()[0])
-
-#         db.rollback()
-#         return jsonify(message='Post failed'), 500
-
-#     return jsonify(id=newPost.id)
-
-
-# @bp.route('/posts/<id>', methods=['PUT'])
-# @login_required
-# def update(id):
-#     data = request.get_json()
-#     db = get_db()
-
-#     try:
-#         # retrieve post and update title property
-#         post = db.query(Post).filter(Post.id == id).one()
-#         post.title = data['title']
-#         db.commit()
-#     except:
-#         print(sys.exc_info()[0])
-
-#         db.rollback()
-#         return jsonify(message='Post not found'), 404
-
-#     return '', 204
-
-
-# @bp.route('/posts/<id>', methods=['DELETE'])
-# @login_required
-# def delete(id):
-#     db = get_db()
-
-#     try:
-#         # delete post from db
-#         db.delete(db.query(Post).filter(Post.id == id).one())
-#         db.commit()
-#     except:
-#         print(sys.exc_info()[0])
-
-#         db.rollback()
-#         return jsonify(message='Post not found'), 404
-
-#     return '', 204
